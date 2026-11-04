@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -56,5 +57,18 @@ public class Interactable : MonoBehaviour
             gameObject.transform.Rotate(0, -90, 0);
             gameObject.transform.position += new Vector3(1, 0, 0.5f);
         }
+    }
+
+    public void TalkToNPC()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ShowDialogueText());
+    }
+
+    IEnumerator ShowDialogueText()
+    {
+        HUDController.instance.dialogueText.text = "Can't talk to this NPC right now. He is very busy!";
+        yield return new WaitForSeconds(3);
+        HUDController.instance.dialogueText.text = "";
     }
 }

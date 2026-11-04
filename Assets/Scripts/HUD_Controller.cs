@@ -11,6 +11,13 @@ public class HUDController : MonoBehaviour
     }
 
     [SerializeField] TMP_Text interactionText;
+    public TMP_Text dialogueText;
+
+    private void Start()
+    {
+        interactionText.text = "";
+        dialogueText.text = "";
+    }
 
     public void EnableInteractionText(string text)
     {
